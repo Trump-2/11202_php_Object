@@ -7,7 +7,7 @@ class Animal
 
   protected $name;
 
-  // 建構式；物件被 new 出來的當下會被執行
+  // 建構式:物件被 new 出來的當下會被執行；一般是 public
   public function __construct($name)
   {
     // echo "hi";
