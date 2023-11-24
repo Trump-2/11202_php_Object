@@ -42,6 +42,15 @@ echo "<br>";
 // 繼承說明
 class Dog extends Animal
 {
+  function sit()
+  {
+    echo "坐下";
+  }
 }
 
 $dog = new Dog('球球');
+echo $dog->getName();
+echo "<br>";
+echo $dog->setName('妹妹');
+echo $dog->getName();
+$dog->sit();
