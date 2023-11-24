@@ -7,6 +7,13 @@ class Animal
 
   protected $name;
 
+  // 建構式；物件被 new 出來的當下會被執行
+  public function __construct()
+  {
+    echo "hi";
+  }
+
+
   public function setName($name)
   {
     // 存取物件內的屬性的寫法，注意屬性前面沒有 $
