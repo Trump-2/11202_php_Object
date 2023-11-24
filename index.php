@@ -37,3 +37,11 @@ echo "<br>";
 // $animal->name = '阿忠';
 // echo "顯示名稱:" . $animal->name;
 echo "<br>";
+
+
+// 繼承說明
+class Dog extends Animal
+{
+}
+
+$dog = new Dog('球球');
