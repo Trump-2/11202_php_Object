@@ -27,9 +27,7 @@ class DB
       if (is_array($where)) {
 
         if (!empty($where)) {
-          foreach ($where as $col => $value) {
-            $tmp[] = "`$col`='$value'";
-          }
+          $tmp = $this->array2sql($where);
           $sql .= " where " . join(" && ", $tmp);
         }
       } else {
@@ -55,9 +53,7 @@ class DB
       if (is_array($where)) {
 
         if (!empty($where)) {
-          foreach ($where as $col => $value) {
-            $tmp[] = "`$col`='$value'";
-          }
+          $tmp = $this->array2sql($where);
           $sql .= " where " . join(" && ", $tmp);
         }
       } else {
@@ -79,9 +75,7 @@ class DB
     $sql = "select count(`id`) from `$this->table` ";
 
     if (is_array($id)) {
-      foreach ($id as $col => $value) {
-        $tmp[] = "`$col`='$value'";
-      }
+      $tmp = $this->array2sql($id);
       $sql .= " where " . join(" && ", $tmp);
     } else if (is_numeric($id)) {
       $sql .= " where `id`='$id'";
@@ -98,9 +92,7 @@ class DB
     $sql = "select * from `$this->table` ";
 
     if (is_array($id)) {
-      foreach ($id as $col => $value) {
-        $tmp[] = "`$col`='$value'";
-      }
+      $tmp = $this->array2sql($id);
       $sql .= " where " . join(" && ", $tmp);
     } else if (is_numeric($id)) {
       $sql .= " where `id`='$id'";
@@ -119,9 +111,7 @@ class DB
       $sql = "update `$this->table` set ";
 
       if (!empty($array)) {
-        foreach ($array as $col => $value) {
-          $tmp[] = "`$col`='$value'";
-        }
+        $tmp = $this->array2sql($array);
       } else {
         echo "錯誤:缺少要編輯的欄位陣列";
       }
@@ -208,9 +198,7 @@ class DB
     $sql = "delete from `$this->table` where ";
 
     if (is_array($id)) {
-      foreach ($id as $col => $value) {
-        $tmp[] = "`$col`='$value'";
-      }
+      $tmp = $this->array2sql($id);
       $sql .= join(" && ", $tmp);
     } else if (is_numeric($id)) {
       $sql .= " `id`='$id'";
@@ -227,6 +215,15 @@ class DB
   function q($sql)
   {
     return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  // 這裡將上面每個函數都有的 foreach 程式片段獨立成一個 funciton
+  private function array2sql($array)
+  {
+    foreach ($array as $col => $value) {
+      $tmp[] = "`$col`='$value'";
+    }
+    return $tmp;
   }
 }
 
