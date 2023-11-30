@@ -58,6 +58,7 @@ class DB
     return $this->math('min', $col, $where, $other);
   }
 
+  // 複製 min 函數，然後進行微調整
   function avg($col, $where = '', $other = '')
   {
     return $this->math('avg', $col, $where, $other);
@@ -252,13 +253,15 @@ function dd($array)
 }
 
 $student = new DB('students');
-$rows = $student->find(2);
+$rows = $student->count();
 dd($rows);
 echo "<hr>";
-$score = new DB('student_scores');
+$Score = new DB('student_scores');
 $sum = $score->sum('score');
 dd($sum);
 echo "<hr>";
-$score = new DB('student_scores');
 $sum = $score->sum('score', " where `school_num` <= '911020'");
+dd($sum);
+echo "<hr>";
+$sum = $Score->max('score');
 dd($sum);
