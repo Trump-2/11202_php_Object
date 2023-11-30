@@ -236,7 +236,7 @@ class DB
       }
 
       $sql .= $other;
-      //echo 'all=>'.$sql;
+      echo $sql;
       // $rows = $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
       return $sql;
     } else {
@@ -257,10 +257,10 @@ $rows = $student->count();
 dd($rows);
 echo "<hr>";
 $Score = new DB('student_scores');
-$sum = $score->sum('score');
+$sum = $Score->sum('score');
 dd($sum);
 echo "<hr>";
-$sum = $score->sum('score', " where `school_num` <= '911020'");
+$sum = $Score->sum('score', " where `school_num` <= '911020'");
 dd($sum);
 echo "<hr>";
 $sum = $Score->max('score');
