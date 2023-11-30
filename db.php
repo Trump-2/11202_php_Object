@@ -69,6 +69,33 @@ class DB
     }
   }
 
+  // 複製 count 函數，然後進行微調整
+  function sum($where = '', $other = '')
+  {
+    $sql = "select sum(*) from `$this->table` ";
+
+    if (isset($this->table) && !empty($this->table)) {
+
+      if (is_array($where)) {
+
+        if (!empty($where)) {
+          $tmp = $this->array2sql($where);
+          $sql .= " where " . join(" && ", $tmp);
+        }
+      } else {
+        $sql .= " $where";
+      }
+
+      $sql .= $other;
+      //echo 'all=>'.$sql;
+      $rows = $this->pdo->query($sql)->fetchColumn();
+      return $rows;
+    } else {
+      echo "錯誤:沒有指定的資料表名稱";
+    }
+  }
+
+
 
   function total($id)
   {
