@@ -10,7 +10,7 @@ class DB
   protected $pdo;
   protected $table;
 
-  
+
   // 當物件被創造出來時，建構函數內部的程式碼就會被執行
   public function __construct($table)
   {
@@ -48,7 +48,7 @@ class DB
   // }
 
 
-  
+
   // 這個函數是把 sum()、max()、min()、avg() 重複的部分提出來
   private  function math($math, $col, $array = '', $other = '')
   {
@@ -115,6 +115,13 @@ class DB
     $row = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     return $row;
   }
+
+  // $sql = "insert into $table (`col1`, `col2`, `col3`, ...) values ('val1', 'val2', 'val3', ...)"
+  // ['col1' => 'val1', 'col2' => 'val2', 'col3' => 'val3' ...] 轉換成 (`col1`,`col2`,`col3`, ...) values ('val1','val2','val3', ...)"
+
+  // $sql = "update `$table` set `col1` = 'val1', `col2` = 'val2', `col3` = 'val3', ... where `id` = ''"
+  // ['col1' => 'val1', 'col2' => 'val2', 'col3' => 'val3' ...] 轉換成 `col1` = 'val1', `col2` = 'val2', `col3` = 'val3'"
+
 
   // save () 結合了 update()、insert()
   function save($array)
