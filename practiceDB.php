@@ -35,7 +35,7 @@ class DB
         $sql = "select $math(`$col`) from `$this->table` ";
         $sql = $this->sql_all($sql, $where, $other);
         // echo $sql;
-        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->pdo->query($sql)->fetchColumn();
     }
 
     function sum($col, $where = '', $other = '')
