@@ -48,7 +48,7 @@ class DB
 
   function find($id)
   {
-    $sql = "select from `$this->table` where ";
+    $sql = "select * from `$this->table` where ";
     if (is_array($id)) {
       $tmp = $this->array2sql($id);
       $sql .= join(" && ", $tmp); // 確認一下是否需要在  && 前後有空白
