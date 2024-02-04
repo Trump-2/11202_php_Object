@@ -61,7 +61,7 @@ class DB
 
   function delete($id)
   {
-    $sql = "delete * from `$this->table` where ";
+    $sql = "delete from `$this->table` where ";
     if (is_array($id)) {
       $tmp = $this->array2sql($id);
       $sql .= join("&&", $tmp);
