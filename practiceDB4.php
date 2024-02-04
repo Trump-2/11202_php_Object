@@ -48,7 +48,7 @@ class DB
 
   function find($id)
   {
-    $sql = "select * from `$this->table` where ";
+    $sql = "select from `$this->table` where ";
     if (is_array($id)) {
       $tmp = $this->array2sql($id);
       $sql .= join(" && ", $tmp); // 確認一下是否需要在  && 前後有空白
@@ -104,19 +104,20 @@ class DB
       $sql .= " $other";
       return $sql; // 這裡當初寫錯
     }
-
   }
 
-  private function array2sql($array) {
-    foreach($array as $col => $val) {
+  private function array2sql($array)
+  {
+    foreach ($array as $col => $val) {
       $tmp[] = "`$col`='$val'";
     }
     return $tmp;
   }
 
-  private function math($math, $col, $where, $other) {
+  private function math($math, $col, $where, $other)
+  {
     $sql = "select $math(`$col`) from `$this->table` ";
-    $sql = $this->sql_all($sql,$where,$other);
+    $sql = $this->sql_all($sql, $where, $other);
     return $this->pdo->query($sql)->fetchColumn();
   }
 }
