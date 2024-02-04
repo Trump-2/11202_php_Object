@@ -91,6 +91,12 @@ class DB
     return $this->pdo->exec($sql);
   }
 
+  function q($sql)
+  {
+    return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
   private function sql_all($sql, $where, $other)
   {
     if (isset($this->table) && !empty($this->table)) {
