@@ -59,7 +59,7 @@ class DB
     return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
   }
 
-  function delete($id)
+  function del($id)
   {
     $sql = "delete from `$this->table` where ";
     if (is_array($id)) {
@@ -127,7 +127,7 @@ class DB
 function dd($array)
 {
   echo "<pre>";
-  echo print_r($array);
+  print_r($array);
   echo "</pre>";
 }
 
