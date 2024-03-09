@@ -1,4 +1,15 @@
 <?php
-include "./02_21-2.php";
-$User->save(['id' => 3, 'acc' => 'Lebron', 'pw' => 666, 'email' => "test4@gmail.com"]);
-// $User->save(['acc' => "Kobe", 'pw' => 7777, "email" => 'test2@gmail.com']);
+include "./03_08.php";
+
+// 增
+// $User->save(['acc' => 'prac', 'pw' => 777]);
+
+// 改
+// $User->save(['id' => 1, 'acc' => 'test', 'pw' => 666]);
+
+// 刪
+// $User->del(2);
+// $User->del(['acc' => 'test', 'pw' => 666]);
+
+// 查，搭配 dd()
+// dd($User->all());

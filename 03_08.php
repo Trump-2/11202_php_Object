@@ -5,7 +5,7 @@ date_default_timezone_set("Asia/Taipei");
 
 class DB
 {
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db04";
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=0309";
     protected $table;
     protected $pdo;
 
@@ -98,8 +98,8 @@ class DB
             }
         } else {
             $sql = "insert into `$this->table` ";
-            $cols = "(`" . join(" `,` ", array_keys($array)) . "`)";
-            $vals = "('" . join(" ',' ", $array) . "')";
+            $cols = "(`" . join("`,`", array_keys($array)) . "`)";
+            $vals = "('" . join("','", $array) . "')";
             $sql .= $cols . " values " . $vals;
         }
 
@@ -141,3 +141,6 @@ function to($url)
 {
     header("location: $url");
 }
+
+
+$User = new DB("user");
